@@ -5,10 +5,11 @@ import PropTypes from "prop-types";
 class FormattedList extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-    values: PropTypes.arrayOf(PropTypes.string)
+    values: PropTypes.arrayOf(PropTypes.string),
+    messageId: PropTypes.string
   };
   render() {
-    const { values, intl } = this.props;
+    const { values, intl, messageId } = this.props;
     const formattedMessages = values.map(m => intl.formatMessage({ id: m }));
     const formatter = new Intl.ListFormat(intl.locale, {
       style: "long",
@@ -17,10 +18,10 @@ class FormattedList extends Component {
     const formattedList = formatter.format(formattedMessages);
     return (
       <FormattedMessage
-        id={"prefix"}
+        id={messageId}
         defaultMessage={formattedList}
         values={{
-          forbidden: formattedList
+          list: formattedList
         }}
       />
     );

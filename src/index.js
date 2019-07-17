@@ -1,14 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { IntlProvider } from "react-intl";
+
+import FormattedList from "./formattedList";
 
 import "./styles.css";
 
+const messages = {
+  color1: "red",
+  color2: "blue",
+  color3: "black",
+  pre_message: "I love {list}"
+};
 function App() {
+  const messagesId = ["color1", "color2", "color3"];
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <IntlProvider locale={"en"} messages={messages}>
+      <FormattedList values={messagesId} messageId={"pre_message"} />
+    </IntlProvider>
   );
 }
 

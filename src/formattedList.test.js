@@ -9,7 +9,7 @@ function mountWithIntl(element) {
     m1: "foo1",
     m2: "foo2",
     m3: "foo3",
-    prefix: "You should not use {forbidden}"
+    pre: "You should not use {list}"
   };
   return mount(
     <IntlProvider locale={"en"} messages={messages}>
@@ -18,11 +18,12 @@ function mountWithIntl(element) {
   );
 }
 describe("FormattedList", () => {
-  test("foo", () => {
-    const messages = ["m1", "m2", "m3"];
+  test("format list correctly", () => {
+    const messageList = ["m1", "m2", "m3"];
     const element = mountWithIntl(
-      <FormattedList values={messages} prefix={"pre"} />
+      <FormattedList values={messageList} messageId={"pre"} />
     ).find(FormattedMessage);
+    console.log(element.html());
     expect(element.html()).toEqual(
       "<span>You should not use foo1, foo2, and foo3</span>"
     );
