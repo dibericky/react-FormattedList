@@ -6,7 +6,7 @@ Given these messages for intl
 color1: 'red',
 color2: 'blue',
 color3: 'black',
-pre_message: 'I love '
+pre_message: 'I love {list}'
 ```
 
 And this code
